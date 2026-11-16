@@ -1,0 +1,195 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "TI.YYYY.MM.####",
+ "creation": "2026-11-13 11:41:04.212830",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "location",
+  "cost_center",
+  "start_date",
+  "column_break_khkb",
+  "invoice_date",
+  "transporter",
+  "end_date",
+  "section_break_dwrs",
+  "machinery_type",
+  "section_break_xstd",
+  "transporter_invoice_details",
+  "section_break_cwwz",
+  "total_quantity",
+  "column_break_vdgu",
+  "total",
+  "section_break_kbmn",
+  "column_break_zrni",
+  "column_break_kiwy",
+  "grand_total",
+  "in_words",
+  "outstanding_amount",
+  "section_break_pzsq",
+  "transporter_charges",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_pzsq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Transportation Invoice",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Location",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_khkb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transporter",
+   "fieldtype": "Data",
+   "label": "Transporter"
+  },
+  {
+   "fieldname": "section_break_xstd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "transporter_invoice_details",
+   "fieldtype": "Table",
+   "label": "Transporter Invoice Details",
+   "options": "Transporter Invoice Details"
+  },
+  {
+   "fieldname": "section_break_kbmn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Float",
+   "label": "Grand Total (BTN)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_zrni",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kiwy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "in_words",
+   "fieldtype": "Data",
+   "label": "In Words (BTN)"
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Float",
+   "label": "Outstanding Amount"
+  },
+  {
+   "fieldname": "section_break_cwwz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Float",
+   "label": "Total Quantity"
+  },
+  {
+   "fieldname": "column_break_vdgu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total (BTN)"
+  },
+  {
+   "fetch_from": "location.cost_center",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "transporter_charges",
+   "fieldtype": "Link",
+   "label": "Transporter Charges",
+   "options": "Transportation Charges"
+  },
+  {
+   "fieldname": "section_break_dwrs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "machinery_type",
+   "fieldtype": "Select",
+   "label": "Machinery Type",
+   "options": "Own\nOthers"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-13 16:25:14.963744",
+ "modified_by": "Administrator",
+ "module": "Fleet Management",
+ "name": "Transportation Invoice",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

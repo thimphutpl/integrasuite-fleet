@@ -1,0 +1,196 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:transport_charge_no",
+ "creation": "2026-11-12 15:51:27.366485",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "transportation_charge_details_section",
+  "source_location",
+  "dispatch_no",
+  "dispatch_date",
+  "column_break_bmlp",
+  "destination_location",
+  "transport_charge_no",
+  "transport_charge_date",
+  "transporter_details_section",
+  "machinery_type",
+  "equipment",
+  "column_break_jgdz",
+  "transporter",
+  "driveroperator",
+  "section_break_qbdz",
+  "transportation_charge",
+  "section_break_yzkk",
+  "net_transportation_charge",
+  "actual_transportation_charge",
+  "column_break_edhr",
+  "transit_loss_charge",
+  "section_break_hfco",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_hfco",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Transportation Charges",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "source_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source Location",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_bmlp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "destination_location",
+   "fieldtype": "Link",
+   "label": "Destination Location",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dispatch_no",
+   "fieldtype": "Data",
+   "label": "Dispatch No"
+  },
+  {
+   "fieldname": "dispatch_date",
+   "fieldtype": "Date",
+   "label": "Dispatch Date"
+  },
+  {
+   "fieldname": "transport_charge_no",
+   "fieldtype": "Data",
+   "label": "Transport Charge No",
+   "unique": 1
+  },
+  {
+   "fieldname": "transport_charge_date",
+   "fieldtype": "Date",
+   "label": "Transport Charge Date"
+  },
+  {
+   "fieldname": "section_break_qbdz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "transportation_charge",
+   "fieldtype": "Table",
+   "label": "Transportation Charge ",
+   "options": "Transportation Charges Item"
+  },
+  {
+   "fieldname": "transportation_charge_details_section",
+   "fieldtype": "Section Break",
+   "label": "Transportation Charge Details"
+  },
+  {
+   "fieldname": "transporter_details_section",
+   "fieldtype": "Section Break",
+   "label": "Transporter Details"
+  },
+  {
+   "depends_on": "eval:doc.machinery_type == \"Own\"",
+   "fieldname": "equipment",
+   "fieldtype": "Link",
+   "label": "Equipment",
+   "mandatory_depends_on": "eval:doc.machinery_type == \"Own\"",
+   "options": "Equipment"
+  },
+  {
+   "fetch_from": "equipment.current_operator",
+   "fieldname": "driveroperator",
+   "fieldtype": "Data",
+   "label": "Driver/Operator"
+  },
+  {
+   "fieldname": "column_break_jgdz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.machinery_type == \"Others\"",
+   "fieldname": "transporter",
+   "fieldtype": "Data",
+   "label": "Transporter",
+   "mandatory_depends_on": "eval:doc.machinery_type == \"Others\""
+  },
+  {
+   "fieldname": "section_break_yzkk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "net_transportation_charge",
+   "fieldtype": "Float",
+   "label": "Net Transportation Charge "
+  },
+  {
+   "fieldname": "actual_transportation_charge",
+   "fieldtype": "Float",
+   "label": "Actual Transportation Charge"
+  },
+  {
+   "fieldname": "column_break_edhr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "transit_loss_charge",
+   "fieldtype": "Float",
+   "label": "Transit Loss Charge"
+  },
+  {
+   "fieldname": "machinery_type",
+   "fieldtype": "Select",
+   "label": "Machinery Type",
+   "options": "\nOwn\nOthers",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-13 14:37:02.682108",
+ "modified_by": "Administrator",
+ "module": "Fleet Management",
+ "name": "Transportation Charges",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,9 @@
+# Copyright (c) 2026, TTPL and contributors
+# For license information, please see license.txt
+
+# import frappe
+from frappe.model.document import Document
+
+
+class EquipmentReservationEntry(Document):
+	pass
