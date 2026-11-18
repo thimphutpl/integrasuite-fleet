@@ -366,12 +366,14 @@
    "collapsible": 1,
    "fieldname": "more_info",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "More Information"
   },
   {
    "default": "0",
    "fieldname": "allow_zero_valuation_rate",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Allow Zero Valuation Rate",
    "no_copy": 1,
    "print_hide": 1,
@@ -743,7 +745,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-11-18 15:26:44.996287",
+ "modified": "2026-11-18 15:46:38.756740",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Trip Load Assessment Item",
