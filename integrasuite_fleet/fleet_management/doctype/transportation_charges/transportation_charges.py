@@ -104,7 +104,13 @@ def make_transportation_invoice(source_name, target_doc=None):
 					"posting_date": "invoice_date",
 					"actual_transportation_charge":"outstanding_amount",
 					# "actual_transportation_charge": "grand_total",
-					"destination_location": "location"
+					"destination_location": "location",
+					"machinery_type": "machinery_type",
+					"equipment": "equipment",
+					"transporter": "transporter",
+					"transit_loss_charge": "transit_loss_charge",
+					"company": "company",
+					"net_transportation_charge": "net_amount"
 				},
 				"postprocess": update_date,
 				"validation": {"docstatus": ["=", 1]},

@@ -7,15 +7,18 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "location",
   "cost_center",
-  "start_date",
   "column_break_khkb",
   "invoice_date",
-  "transporter",
+  "start_date",
   "end_date",
   "section_break_dwrs",
   "machinery_type",
+  "equipment",
+  "column_break_mqnl",
+  "transporter",
   "section_break_xstd",
   "transporter_invoice_details",
   "section_break_cwwz",
@@ -24,6 +27,8 @@
   "total",
   "section_break_kbmn",
   "column_break_zrni",
+  "net_amount",
+  "transit_loss_charge",
   "column_break_kiwy",
   "grand_total",
   "in_words",
@@ -78,6 +83,7 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:doc.machinery_type == \"Others\"",
    "fieldname": "transporter",
    "fieldtype": "Data",
    "label": "Transporter"
@@ -160,13 +166,41 @@
    "fieldtype": "Select",
    "label": "Machinery Type",
    "options": "Own\nOthers"
+  },
+  {
+   "depends_on": "eval:doc.machinery_type == \"Own\"",
+   "fieldname": "equipment",
+   "fieldtype": "Link",
+   "label": "Equipment",
+   "options": "Equipment"
+  },
+  {
+   "fieldname": "column_break_mqnl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transit_loss_charge",
+   "fieldtype": "Float",
+   "label": "Transit Loss Charge"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Float",
+   "label": "Net Amount"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-11-13 16:25:14.963744",
+ "modified": "2026-11-18 16:34:36.085233",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Transportation Invoice",

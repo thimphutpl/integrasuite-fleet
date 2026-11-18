@@ -7,6 +7,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "transportation_charge_details_section",
   "source_location",
   "dispatch_no",
@@ -161,13 +162,20 @@
    "label": "Machinery Type",
    "options": "\nOwn\nOthers",
    "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-11-13 14:37:02.682108",
+ "modified": "2026-11-18 16:25:12.436630",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Transportation Charges",
