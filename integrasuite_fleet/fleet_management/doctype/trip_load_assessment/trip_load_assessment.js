@@ -35,6 +35,13 @@ frappe.ui.form.on('Trip Load Assessment', {
                     child.qty               = row.qty;
                     child.uom               = row.uom;
                     child.conversion_factor = row.conversion_factor || 1;
+                    child.basic_rate = row.basic_rate;
+                    child.basic_amount = row.basic_amount;
+                    child.amount = row.amount;
+                    child.additional_cost = row.additional_cost;
+                    child.landed_cost_voucher_amount = row.landed_cost_voucher_amount;
+                    child.valuation_rate = row.valuation_rate;
+                    child.cost_center = row.cost_center;
 
                     let total_wt_kg = flt(row.total_weight);
                     if (!total_wt_kg && row.weight_per_unit) {
