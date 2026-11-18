@@ -29,13 +29,13 @@ class TransportationInvoice(Document):
 		if self.company:
 			default_bank_account = frappe.db.get_value("Company", self.company, "default_bank_account")
 		else:	
-			default_bank_account = frappe.db.get_value("Branch", self.branch, "expense_bank_account")
+			default_bank_account = frappe.db.get_value("Branch", self.location, "expense_bank_account")
 		advance_account = frappe.db.get_single_value("Maintenance Accounts Settings", "default_advance_amount")
 
 		if not default_bank_account:
 			frappe.throw(
 				"Default Expense Bank Account is not set for {}. Please configure it in the Branch.".format(
-					frappe.get_desk_link("Branch", self.branch)
+					frappe.get_desk_link("Branch", self.location)
 				),
 				title="Missing Account"
 			)
