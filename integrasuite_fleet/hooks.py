@@ -16,7 +16,7 @@ add_to_apps_screen = [
 		"name": "integrasuite_fleet",
 		"logo": "/assets/integrasuite_fleet/logo.jpg",
 		"title": "Integrasuite Fleet",
-		"route": "/integrasuite_fleet",
+        "route": "/desk/fleet-management",
 		# "has_permission": "integrasuite_fleet.api.permission.has_app_permission",
 	}
 ]
