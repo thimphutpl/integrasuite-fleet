@@ -11,18 +11,65 @@ frappe.ui.form.on('Trip Load Assessment', {
     weight_capacity_tons: function(frm) {
         calculate_and_render_dashboard(frm);
     },
-    "stock_entry": function (frm) {
-        if (frm.doc.stock_entry) {
-            frappe.call({
-                method: "integrasuite_fleet.fleet_management.doctype.trip_load_assessment.trip_load_assessment.get_stock_entry",
-                args: {stock_entry: frm.doc.stock_entry },
-                callback: function (r) {
-                    console.log(r.message)
-                    if (r.message) {
-                    }
+    stock_entry: function(frm) {
+        if (!frm.doc.stock_entry) return;
+
+        frappe.call({
+            method: "integrasuite_fleet.fleet_management.doctype.trip_load_assessment.trip_load_assessment.get_stock_entry",
+            args: { stock_entry: frm.doc.stock_entry },
+            freeze: true,
+            freeze_message: __("Fetching Stock Entry items…"),
+            callback: function(r) {
+                if (!r.message || !r.message.length) {
+                    frappe.msgprint(__("No submitted items found in the selected Stock Entry."));
+                    return;
                 }
-            });
-        }
+
+                // Clear existing rows so re-selecting rebuilds cleanly
+                frm.clear_table("items");
+
+                r.message.forEach(function(row) {
+                    let child = frm.add_child("items");
+
+                    // ---- Direct field mapping ----
+                    child.item_code        = row.item_code;
+                    child.item_name        = row.item_name;
+                    child.description      = row.description;
+
+                    // Quantities
+                    child.qty              = row.qty;
+                    child.uom              = row.uom;
+                    child.conversion_factor = row.conversion_factor || 1;
+
+                    // Weight (already KG in Stock Entry Detail)
+                    // Prefer explicit total_weight, else derive
+                    let total_wt_kg = flt(row.total_weight);
+                    if (!total_wt_kg && row.weight_per_unit) {
+                        total_wt_kg = flt(row.weight_per_unit) * flt(row.stock_qty || row.transfer_qty || row.qty);
+                    }
+                    child.total_weight_kg = total_wt_kg;
+                    child.weight          = total_wt_kg; // if your field means per-unit weight, adjust here
+
+                    // Dimensions (only if your child has these fields)
+                    child.length = row.length;
+                    child.width  = row.width;
+                    child.height = row.height;
+
+                    // Optional warehouse / accounting info
+                    child.s_warehouse      = row.s_warehouse;
+                    child.t_warehouse      = row.t_warehouse;
+                    child.cost_center      = row.cost_center;
+                    child.expense_account  = row.expense_account;
+
+                    // Keep the link back to source for traceability (if field exists)
+                    child.stock_entry_detail = row.name;
+                });
+
+                frm.refresh_field("items");
+                calculate_and_render_dashboard(frm);
+                frm.dirty(); // mark form as unsaved
+            }
+        });
     }
 });
 

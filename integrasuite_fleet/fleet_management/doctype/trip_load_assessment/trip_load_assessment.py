@@ -62,27 +62,47 @@ class TripLoadAssessment(Document):
 
 @frappe.whitelist()
 def get_stock_entry(stock_entry):
-    if stock_entry:
-        return frappe.get_all(
-            "Stock Entry Detail",
-            filters={
-                "docstatus": 1,
-                "parent": stock_entry
-            },
-            fields=[
-				"s_warehouse",
-				"t_warehouse",
-				"item_code",
-				"qty",
-				"uom",
-				"stock_uom",
-				"conversion_factor",
-				"item_name",
-                "basic_rate",
-                "basic_amount",
-                "amount",
-                "valuation_rate",
-                "cost_center",
-                "expense_account"
-            ]
-        )
+    if not stock_entry:
+        return []
+
+    # Make sure the Stock Entry is submitted & not cancelled
+    se = frappe.db.get_value(
+        "Stock Entry", stock_entry, ["docstatus", "stock_entry_type"], as_dict=True
+    )
+    if not se:
+        frappe.throw(f"Stock Entry {stock_entry} not found")
+    if se.docstatus != 1:
+        frappe.throw(f"Stock Entry {stock_entry} must be submitted (docstatus=1)")
+
+    return frappe.get_all(
+        "Stock Entry Detail",
+        filters={"parent": stock_entry, "parenttype": "Stock Entry"},
+        fields=[
+            "name",
+            "item_code",
+            "item_name",
+            "description",
+            "qty",
+            "transfer_qty",
+            "uom",
+            "stock_uom",
+            "conversion_factor",
+            "stock_qty",
+            "basic_rate",
+            "basic_amount",
+            "amount",
+            "valuation_rate",
+            "s_warehouse",
+            "t_warehouse",
+            "cost_center",
+            "expense_account",
+            "project",
+            "batch_no",
+            "serial_no",
+            "weight_per_unit",
+            "total_weight",          # in KG (stock UOM based)
+            "against_sales_order",
+            "against_sales_invoice",
+        ],
+        order_by="idx asc",
+    )		

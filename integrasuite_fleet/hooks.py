@@ -1,7 +1,7 @@
 app_name = "integrasuite_fleet"
-app_title = "Integrasuite Flee"
+app_title = "Integrasuite Fleet"
 app_publisher = "TTPL"
-app_description = "Integrasuite Flee"
+app_description = "Integrasuite Fleet"
 app_email = "sherubrangdrel@thimphutechpark.bt"
 app_license = "mit"
 
@@ -11,15 +11,15 @@ app_license = "mit"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "integrasuite_fleet",
-# 		"logo": "/assets/integrasuite_fleet/logo.png",
-# 		"title": "Integrasuite Flee",
-# 		"route": "/integrasuite_fleet",
-# 		"has_permission": "integrasuite_fleet.api.permission.has_app_permission",
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "integrasuite_fleet",
+		"logo": "/assets/integrasuite_fleet/logo.jpg",
+		"title": "Integrasuite Fleet",
+		"route": "/integrasuite_fleet",
+		# "has_permission": "integrasuite_fleet.api.permission.has_app_permission",
+	}
+]
 
 # The dock, the rail down the left of the desk, is a document rather than a hook. Author it in
 # Manage Dock on a developer-mode site and press Export to App, and it is written to
