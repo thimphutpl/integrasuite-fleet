@@ -45,7 +45,7 @@ frappe.ui.form.on('Trip Load Assessment', {
                     // Prefer explicit total_weight, else derive
                     let total_wt_kg = flt(row.total_weight);
                     if (!total_wt_kg && row.weight_per_unit) {
-                        total_wt_kg = flt(row.weight_per_unit) * flt(row.stock_qty || row.transfer_qty || row.qty);
+                        total_wt_kg = flt(row.weight_per_unit) * flt(row.transfer_qty || row.qty);
                     }
                     child.total_weight_kg = total_wt_kg;
                     child.weight          = total_wt_kg; // if your field means per-unit weight, adjust here
