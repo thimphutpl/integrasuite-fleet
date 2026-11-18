@@ -35,10 +35,10 @@
   {
    "fieldname": "vehicle_no",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Vehicle No",
-   "options": "Equipment",
-   "reqd": 1
+   "options": "Equipment"
   },
   {
    "fieldname": "qty",
@@ -80,7 +80,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-11-13 16:24:37.829812",
+ "modified": "2026-11-18 16:53:47.381856",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Transporter Invoice Details",
