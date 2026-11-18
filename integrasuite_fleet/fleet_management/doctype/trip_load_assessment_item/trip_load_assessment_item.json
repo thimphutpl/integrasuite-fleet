@@ -275,8 +275,7 @@
    "oldfieldtype": "Link",
    "options": "UOM",
    "print_hide": 1,
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "depends_on": "eval:doc.uom != doc.stock_uom",
@@ -734,7 +733,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-11-12 10:42:37.722579",
+ "modified": "2026-11-18 15:13:47.220748",
  "modified_by": "Administrator",
  "module": "Fleet Management",
  "name": "Trip Load Assessment Item",
