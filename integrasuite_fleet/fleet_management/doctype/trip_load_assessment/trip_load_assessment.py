@@ -88,6 +88,8 @@ def get_stock_entry(stock_entry):
             "stock_uom",
             "conversion_factor",
             "basic_rate",
+			"additional_cost",
+			"landed_cost_voucher_amount",
             "basic_amount",
             "amount",
             "valuation_rate",
