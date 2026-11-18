@@ -87,7 +87,6 @@ def get_stock_entry(stock_entry):
             "uom",
             "stock_uom",
             "conversion_factor",
-            "stock_qty",
             "basic_rate",
             "basic_amount",
             "amount",
@@ -96,13 +95,6 @@ def get_stock_entry(stock_entry):
             "t_warehouse",
             "cost_center",
             "expense_account",
-            "project",
-            "batch_no",
-            "serial_no",
-            "weight_per_unit",
-            "total_weight",          # in KG (stock UOM based)
-            "against_sales_order",
-            "against_sales_invoice",
         ],
         order_by="idx asc",
     )		
